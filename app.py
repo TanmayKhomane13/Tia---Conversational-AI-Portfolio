@@ -1,9 +1,12 @@
 import os
+print("[STARTUP] app.py started", flush=True)
+print(f"[STARTUP] Python version: {os.sys.version}", flush=True)
+print(f"[STARTUP] PORT: {os.environ.get('PORT', 'not set')}", flush=True)
 import gradio as gr
 from gradio_client import Client
 
 from langchain_chroma import Chroma
-from huggingface_hub import InferenceClient
+from langchain_huggingface import HuggingFaceEmbeddings
 
 # ========== MODEL SECTION ==========
 HF_SPACE_ID = "TanmayKhomane13/tia-inference"
@@ -18,43 +21,30 @@ client = Client(
 CHROMA_PATH = "vector_store/chroma_db"
 COLLECTION_NAME = "Tia_KB"
 
-embedding_client = InferenceClient(
-    provider="hf-inference",
-    api_key=os.environ["HF_TOKEN"]
+print("[CHECKPOINT 3] Starting embedding model initialization", flush=True)
+
+embeddings = HuggingFaceEmbeddings(
+    model_name="sentence-transformers/all-MiniLM-L6-v2",
+    model_kwargs={"device": "cpu"},
+    encode_kwargs={"normalize_embeddings": False}
 )
 
-def get_embedding(text):
-    return embedding_client.feature_extraction(
-        text,
-        model="sentence-transformers/all-MiniLM-L6-v2"
-    ).tolist()
+print("[CHECKPOINT 4] Embedding model initialized", flush=True)
 
-class RemoteEmbeddings:
-    def embed_query(self, text):
-        return get_embedding(text)
-
-    def embed_documents(self, texts):
-        return [get_embedding(text) for text in texts]
-
-embeddings = RemoteEmbeddings()
+print("[CHECKPOINT 5] Connecting to ChromaDB", flush=True)
 
 vector_store = Chroma(
     collection_name=COLLECTION_NAME,
     persist_directory=CHROMA_PATH,
     embedding_function=embeddings
 )
+
+print("[CHECKPOINT 6] ChromaDB initialized", flush=True)
 
 retriever = vector_store.as_retriever(search_kwargs={"k": 4})
 
-vector_store = Chroma(
-    collection_name=COLLECTION_NAME,
-    persist_directory=CHROMA_PATH,
-    embedding_function=embeddings
-)
+print("[CHECKPOINT 7] Retriever initialized", flush=True)
 
-retriever = vector_store.as_retriever(
-    search_kwargs={"k": 4}
-)
 
 def retriever_qa(query):
     documents = retriever.invoke(query)

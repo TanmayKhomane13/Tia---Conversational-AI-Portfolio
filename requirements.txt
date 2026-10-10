@@ -1,5 +1,8 @@
 gradio
 gradio_client
 langchain-chroma
+langchain-core
 langchain-huggingface
-huggingface_hub
+sentence-transformers
+torch
+numpy
