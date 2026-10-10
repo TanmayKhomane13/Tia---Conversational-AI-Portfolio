@@ -1,428 +1,590 @@
-# TANMAY KHOMANE
+# TANMAY KHOMANE — PROFESSIONAL KNOWLEDGE BASE
 
-## ABOUT
+## 1. PROFESSIONAL PROFILE
 
-Tanmay Khomane is a Computer Engineering student interested in Artificial Intelligence, Generative AI, Machine Learning, Large Language Models, Retrieval-Augmented Generation, Conversational AI, and Unity game development.
+Tanmay Khomane is a Computer Engineering student at Savitribai Phule Pune University (SPPU), pursuing a Bachelor of Engineering (B.E.) with expected graduation in 2028. His technical interests include Artificial Intelligence, Machine Learning, Generative AI, Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), Natural Language Processing (NLP), and Unity game development.
 
-He is currently pursuing a Bachelor of Engineering (B.E.) in Computer Engineering under Savitribai Phule Pune University (SPPU) and is expected to graduate in 2028.
+Tanmay develops practical software projects to apply technical concepts to real-world problems. His experience includes building AI pipelines, integrating language models, implementing retrieval systems, fine-tuning transformer models, developing Unity games, and publishing Android games.
 
-Tanmay enjoys building practical software projects that combine technical concepts with real-world applications. He is particularly interested in understanding how systems work internally rather than relying only on high-level abstractions.
+He prefers understanding how software components work internally. His development approach emphasizes practical experimentation, debugging, and building straightforward implementations before introducing additional frameworks or abstractions.
 
-He has experience working on both AI/ML projects and game development projects.
+His portfolio includes three AI projects—KAARSHIKA, MIRA, and Tia—and two game projects—The Black Cave: Lost Treasure and Dodo's Odyssey.
 
-## EDUCATION
+## 2. EDUCATION
 
-Degree: Bachelor of Engineering (B.E.) in Computer Engineering
+- Degree: Bachelor of Engineering (B.E.) in Computer Engineering
+- University: Savitribai Phule Pune University (SPPU)
+- Academic level: Third Year Engineering (TE)
+- Expected graduation: 2028
 
-University: Savitribai Phule Pune University (SPPU)
+# CATEGORY 1: AI PROJECTS
 
-Current academic level: Third Year Engineering (TE)
+## 3. KAARSHIKA — AGRICULTURAL AI
 
-Expected graduation: 2028
+**Category:** AI and Machine Learning  
+**Domain:** Agricultural AI, intent classification, RAG, action selection  
+**Primary knowledge source:** Package of Practices (Crops)
 
-## TECHNICAL INTERESTS
+### Project Overview
 
-Tanmay's main areas of technical interest include:
+KAARSHIKA is an agricultural AI system designed to provide context-aware assistance for agricultural queries. It combines intent classification, information retrieval, reinforcement-learning-based action scoring and selection, and LLM-based response generation.
 
-* Artificial Intelligence
-* Generative AI
-* Large Language Models (LLMs)
-* Machine Learning
-* Natural Language Processing
-* Retrieval-Augmented Generation (RAG)
-* Conversational AI
-* AI Engineering
-* Embeddings
-* Vector databases
-* Fine-tuning
-* Parameter-Efficient Fine-Tuning (PEFT)
-* LoRA
-* LangChain
-* Unity game development
-* C#
-* Game design and development
+The system considers the user's query and farm context to identify the relevant intent, retrieve agricultural information, select an appropriate action, and generate a response grounded in the selected information and action.
 
-## AI EXPERIENCE
+### System Architecture
 
-Tanmay has hands-on experience building AI systems and RAG pipelines.
+User query + farm context → Intent classification → DPR-based retrieval → FAISS search → Action scoring and selection → Qwen2.5-3B-Instruct → Final response
 
-He has worked with transformer-based models, embeddings, vector databases, information retrieval, classification models, PEFT/LoRA, and Large Language Models.
+### Technical Implementation
 
-Two of his major AI projects are KAARSHIKA and MIRA.
+**Intent classification:** KAARSHIKA uses a DistilBERT-based classifier fine-tuned with Parameter-Efficient Fine-Tuning (PEFT) and LoRA to classify incoming agricultural queries.
 
-He has built RAG systems both manually and using higher-level frameworks. KAARSHIKA and MIRA were implemented without LangChain, while he has also gained experience using LangChain through an LLM QA chatbot project.
+**Knowledge retrieval:** The system uses the Package of Practices (Crops) document as its primary agricultural knowledge source. Dense Passage Retrieval (DPR) embeddings and FAISS are used to retrieve relevant information.
 
-## KAARSHIKA — AGRICULTURAL AI
+**Action scoring:** A DistilBERT-based reward model, trained using PEFT, scores candidate actions in the action-selection pipeline.
 
-KAARSHIKA is an agricultural AI system designed to provide intelligent and context-aware assistance for agricultural queries.
+**Action selection:** The reinforcement-learning-based component scores candidate actions and selects an action for the response pipeline.
 
-The system combines intent classification, Retrieval-Augmented Generation, reinforcement-learning-based action selection, and a Large Language Model.
+**Response generation:** Qwen2.5-3B-Instruct generates the final response using custom prompts and the information provided by the preceding pipeline stages.
 
-The overall architecture is:
+**Action preservation:** The selected action is an important control signal. The generation stage is designed to communicate and elaborate on the selected action rather than independently replacing it with a different action.
 
-User query + farm context
-→ Intent Router
-→ DPR-based retrieval
-→ FAISS vector search
-→ Reinforcement Learning action scoring and selection
-→ Qwen2.5-3B-Instruct
-→ Final response
+### Tanmay's Contribution
 
-The primary knowledge source for the RAG system is the Package of Practices (Crops) document.
+Tanmay worked on the AI pipeline, including intent classification, document retrieval, action scoring, action selection, and LLM integration.
 
-KAARSHIKA uses a DistilBERT-based classifier with PEFT/LoRA for intent classification.
+He implemented the RAG components without relying on LangChain, gaining practical experience with retrieval, vector search, context preparation, and integration with a language model.
 
-The system also includes a reward model based on DistilBERT with PEFT.
+### Technologies and Concepts
 
-The reinforcement-learning component performs action scoring and selection. The selected action is treated as an important control signal for the subsequent generation process.
+Python, PyTorch, Hugging Face Transformers, DistilBERT, Qwen2.5-3B-Instruct, PEFT, LoRA, Dense Passage Retrieval (DPR), FAISS, RAG, intent classification, reward scoring, action selection, and prompt engineering.
 
-The project uses custom prompts and datasets for response generation.
+### What KAARSHIKA Demonstrates
 
-Tanmay implemented the RAG pipeline without relying on LangChain. This gave him hands-on experience with document retrieval, embeddings, vector search, and integrating retrieved information with an LLM.
+KAARSHIKA demonstrates Tanmay's experience integrating multiple AI components into a structured pipeline. It combines agricultural knowledge retrieval, farm context, intent classification, action selection, and LLM generation in a domain-specific application.
 
-## MIRA — MINE INTELLIGENCE AND RISK ASSESSMENT
+---
 
-MIRA stands for Mine Intelligence and Risk Assessment.
+## 4. MIRA — MINE INTELLIGENCE AND RISK ASSESSMENT
 
-MIRA is an AI-powered system designed to assist with mine inspection, issue classification, and risk assessment.
+**Category:** AI and Machine Learning  
+**Domain:** Mine inspection, issue classification, risk assessment, regulatory RAG  
+**Regulatory knowledge source:** Coal Mines Regulations (CMR), 2017  
+**Development context:** SIH 2026 prototype
 
-The overall system includes:
+### Project Overview
 
-Inspector mobile application
-→ Flask backend
-→ MariaDB database
-→ Inspection and PDF processing
-→ AI classification
-→ Risk assessment
-→ Regulatory knowledge retrieval
-→ LLM-generated explanation
+MIRA, or Mine Intelligence and Risk Assessment, is an AI-powered mine inspection and governance prototype. It is designed to assist with inspection finding classification, risk assessment, and retrieval of relevant mining regulations.
 
-Tanmay's role in MIRA focused on the AI components. Backend development was handled by another team member.
+The application connects inspection information with AI-based classification, a separate risk assessment engine, regulatory knowledge retrieval, and LLM-generated explanations.
 
-MIRA uses a DistilBERT model with LoRA for classification tasks involving:
+### System Architecture
 
-* Issue classification
-* Category classification
-* Severity classification
-* Recurrence classification
+Inspector application → Flask backend → MariaDB → Inspection and PDF processing → AI classification → Logistic Regression-based risk assessment → Regulatory retrieval → LLM-generated explanation
 
-MIRA also contains a Logistic Regression-based risk engine.
+### Tanmay's Role
 
-The risk engine does not use reinforcement learning.
+Tanmay's responsibility in MIRA focuses on the AI components. Backend development is handled by another team member.
 
-The regulatory knowledge component uses Retrieval-Augmented Generation based on the CMR 2017 regulations.
+His AI work covers transformer-based classification, risk assessment integration, regulatory retrieval, and LLM integration.
 
-The RAG knowledge base contains approximately 11,726 chunks.
+### Classification System
 
-The retrieval pipeline uses DPR embeddings and FAISS.
+MIRA uses a DistilBERT model fine-tuned with LoRA for classification tasks involving:
 
-The generative component uses Qwen2.5-3B-Instruct with LoRA.
+- Issue classification
+- Category classification
+- Severity classification
+- Recurrence classification
 
-MIRA supports English, Hindi, and Hinglish.
+The classification stage helps structure inspection findings for downstream risk assessment and regulatory analysis.
 
-The system is designed around local and in-house AI rather than external AI APIs.
+### Risk Assessment Engine
 
-Tanmay implemented the RAG components without using LangChain, giving him practical experience with the underlying components of a RAG pipeline.
+MIRA uses a Logistic Regression-based risk engine to assess risk.
 
-## LANGCHAIN EXPERIENCE
+The risk engine is separate from the classification model and does not use reinforcement learning. This differs from KAARSHIKA, which uses reinforcement-learning-based action scoring and selection.
 
-Tanmay has experience using LangChain through an LLM QA chatbot project completed as part of an IBM Large Language Model course.
+### Regulatory Retrieval-Augmented Generation
 
-The project involved:
+MIRA includes a RAG pipeline based on the CMR 2017 regulations.
 
-* Document loading
-* PDF processing
-* Text splitting
-* Embeddings
-* Vector databases
-* Retrieval
-* Question answering
-* LangChain
-* Gradio
+The retrieval pipeline uses DPR embeddings and FAISS vector search. Its regulatory knowledge base contains approximately 11,726 chunks.
 
-This experience introduced Tanmay to building RAG applications using a framework.
+Retrieved regulatory information provides context to Qwen2.5-3B-Instruct with LoRA, which generates explanations grounded in the retrieved material.
 
-His experience therefore includes both manually implemented RAG pipelines and framework-based RAG applications.
+### Technical Implementation
 
-## TIA — CONVERSATIONAL AI PORTFOLIO
+- DistilBERT with LoRA for classification
+- Logistic Regression for risk assessment
+- DPR embeddings for regulatory information retrieval
+- FAISS for vector search
+- Approximately 11,726 regulatory knowledge chunks
+- CMR 2017 as the regulatory knowledge source
+- Qwen2.5-3B-Instruct with LoRA for generation
+- English, Hindi, and Hinglish interaction
+- Integration of classification, risk assessment, retrieval, and generation
+- Local, in-house AI architecture designed without external AI APIs
 
-Tia is Tanmay's personal conversational AI portfolio project.
+### Tanmay's Implementation Experience
 
-The full project name is:
+Tanmay implemented the RAG components without LangChain. This provided hands-on experience with regulatory document retrieval, vector search, retrieved-context integration, and connecting AI components within a larger application.
 
-Tia — Conversational AI Portfolio
+### What MIRA Demonstrates
 
-Tia is designed to allow recruiters, developers, and visitors to interact with Tanmay's professional profile through natural conversation instead of only browsing a traditional portfolio or résumé.
+MIRA demonstrates Tanmay's experience applying AI techniques to a domain-specific problem. It combines transformer-based classification, conventional machine learning for risk assessment, regulatory RAG, and multilingual LLM generation.
 
-The project uses Tanmay's professional information as its knowledge base.
+---
 
-The planned architecture is:
+## 5. TIA — CONVERSATIONAL AI PORTFOLIO
 
-Professional profile data
-→ Text splitting
-→ Embeddings
-→ ChromaDB
-→ Retriever
-→ Large Language Model
-→ Gradio conversational interface
+**Category:** AI Projects  
+**Domain:** Conversational AI, RAG, semantic retrieval  
+**Interface:** Gradio
 
-Tia is designed to answer questions about Tanmay's:
+### Project Overview
 
-* Education
-* Skills
-* AI projects
-* Game development projects
-* Programming experience
-* Technologies
-* Project architecture
-* Learning experience
-* Career interests
-* Professional experience
-* Portfolio
+Tia is Tanmay's personal conversational AI portfolio assistant. It allows recruiters, developers, and other visitors to learn about his background through natural-language conversation.
 
-## UNITY AND GAME DEVELOPMENT
+Tia answers questions about Tanmay's education, technical skills, AI projects, game projects, professional experience, and career interests using a curated knowledge base.
 
-Tanmay has hands-on experience with Unity and C# game development.
+### System Architecture
 
-He has experience with both 2D and 3D game development.
+Professional knowledge-base documents → Text splitting → Sentence-transformer embeddings → ChromaDB → Similarity-based retrieval → Retrieved context + user query → Qwen2.5-3B-Instruct with LoRA → Generated response → Gradio interface
 
-His game development work includes a published 2D mobile game and an ongoing 3D Unity project called Dodo's Odyssey.
+### Technical Implementation
 
-He is interested in gameplay programming, game design, level design, enemy AI, animation, physics, and integrating AI technologies with interactive applications.
+**Knowledge base:** Contains factual information about Tanmay's education, professional profile, AI projects, game projects, technical skills, creative experience, and career interests.
 
-## DODO'S ODYSSEY
+**Text splitting:** Uses RecursiveCharacterTextSplitter to divide documents into smaller chunks suitable for embedding and retrieval.
 
-Dodo's Odyssey is a 3D Unity game project created as a practical learning and portfolio project.
+**Embeddings:** Uses `sentence-transformers/all-MiniLM-L6-v2` to convert text chunks and queries into vector representations.
 
-The game is being developed using Unity and C#.
+**Vector database:** Uses ChromaDB to store document chunks and their embeddings for semantic similarity search.
 
-The project is intended to strengthen Tanmay's understanding of:
+**Retrieval:** Retrieves the most relevant knowledge-base chunks for each user query. The current baseline configuration uses a retriever with `k=4`.
 
-* 3D game development
-* Gameplay programming
-* Character movement
-* Physics
-* Animation
-* Enemy AI
-* Boss AI
-* Level design
-* Unity workflows
-* Game audio
+**Language model:** Uses Qwen2.5-3B-Instruct with LoRA for response generation.
 
-The first level is titled:
+**Interface:** Uses Gradio to provide a conversational web interface.
 
-The Awakening
+**Grounded generation:** Tia is designed to answer professional questions using retrieved information and to avoid inventing facts about Tanmay.
 
-The first location is:
+### Scope and Limitations
 
-KaliaOne Valley, Yugantara
+Tia focuses on Tanmay's professional background, education, projects, skills, and experience. It is not intended to act as a general-purpose assistant.
 
-The game has a science-fiction setting involving humans, aliens, exploration, and conflict.
+Its response quality depends on the accuracy and organization of the knowledge base, retrieval relevance, the quality of the supplied context, and the language model's ability to follow instructions.
 
-The first environment includes a large terrain, forests, valleys, mountains, a skybox, and an alien settlement.
+Tia is being evaluated for retrieval relevance, answer accuracy, context grounding, and appropriate handling of out-of-scope questions.
 
-Tanmay uses Unity's CharacterController for player movement rather than Rigidbody-based character movement.
+### What Tia Demonstrates
 
-The player includes movement, running, jumping, rotation, shooting, and health mechanics.
+Tia demonstrates Tanmay's experience building an LLM-powered application using document processing, embeddings, vector search, ChromaDB, RAG, prompt design, and a conversational interface.
 
-The project also includes enemy AI and an alien boss.
+---
 
-Tanmay has worked with Unity Animator, C# gameplay scripts, enemy detection, shooting systems, projectiles, health systems, ragdoll behavior, and audio effects.
+# CATEGORY 2: GAME PROJECTS
 
-## THE BLACK CAVE: LOST TREASURE
+## 6. THE BLACK CAVE: LOST TREASURE (DEMO)
 
-"The Black Cave: Lost Treasure (Demo)" is a 2D pixel-art platformer developed and published by Tanmay.
+**Category:** Game Development  
+**Genre:** 2D pixel-art platformer  
+**Platform:** Android  
+**Distribution:** Google Play  
+**Development identity:** ArcadeFox Studio  
+**Role:** Founder and Sole Developer
 
-The game was published on Google Play.
+### Project Overview
 
-The project was developed under ArcadeFox Studio.
+The Black Cave: Lost Treasure (Demo) is a 2D pixel-art platformer developed and published by Tanmay under ArcadeFox Studio.
 
-Tanmay founded ArcadeFox Studio as a development and branding identity.
+The project was developed by a team of three people, including two artists. Tanmay was responsible for the game's development.
 
-His role is described as:
+### Gameplay and Technical Implementation
 
-Founder & Sole Developer
+The game features platformer gameplay and sword-throwing mechanics.
 
-The game was developed with a team of three people, including two artists.
+Tanmay's development work included:
 
-The game achieved a 4.7 rating around launch.
+- Player movement and gameplay programming
+- Movement physics
+- Sword-throwing mechanics
+- Enemy AI
+- 2D animation integration
+- Mobile-specific gameplay functionality
+- Performance optimization
+- Game testing and publishing
+- Ad monetization
 
-It received more than 100 downloads within approximately its first month.
+### Publishing and Results
 
-The game used AdMob for monetization, including interstitial and rewarded advertisements.
+- Published a playable demo on Google Play.
+- Achieved a rating of approximately 4.7 around launch.
+- Received more than 100 downloads within approximately the first month.
+- Conducted a closed beta with more than 40 testers.
+- Maintained performance around 60 FPS on mid-range Android devices.
+- Integrated AdMob interstitial and rewarded advertisements.
 
-The project also went through a closed beta with more than 40 testers.
+These figures describe the reported launch and early-release results rather than current lifetime performance.
 
-The game maintained stable performance around 60 FPS on mid-range Android devices.
+### ArcadeFox Studio
 
-Through this project, Tanmay gained practical experience in mobile game development, publishing, testing, performance optimization, monetization, and product presentation.
+ArcadeFox Studio is Tanmay's game development and branding identity. He founded it and used it to develop and publish The Black Cave: Lost Treasure (Demo).
 
-## GAME DEVELOPMENT SKILLS
+### What the Project Demonstrates
 
-Tanmay has experience or active learning experience with:
+The Black Cave demonstrates practical experience taking a mobile game from development through testing and publication. It covers gameplay implementation, physics, enemy behavior, animation, Android publishing, performance optimization, monetization, and product presentation.
 
-* Unity
-* C#
-* 2D game development
-* 3D game development
-* CharacterController
-* Unity Animator
-* Gameplay programming
-* Player movement
-* Player shooting
-* Enemy AI
-* Boss AI
-* Health systems
-* Projectile systems
-* Ragdoll systems
-* Level design
-* Terrain creation
-* Mobile game development
-* Game performance
-* Android publishing
-* AdMob
-* Game audio
+---
 
-## CREATIVE AND DESIGN EXPERIENCE
+## 7. DODO'S ODYSSEY
 
-Tanmay has experience with digital branding, content creation, and visual communication.
+**Category:** Game Development  
+**Genre:** 3D science-fiction exploration and combat  
+**Engine:** Unity  
+**Programming language:** C#  
+**Status:** Ongoing portfolio and learning project
+
+### Project Overview
+
+Dodo's Odyssey is an ongoing 3D Unity game created by Tanmay to develop practical skills in 3D gameplay programming, level design, combat systems, animation, and enemy AI.
+
+The science-fiction story follows a character sent to an alien planet to explore and confront alien forces after alien colonization has harmed human colonies.
+
+### World and Level Design
+
+The first level is titled **The Awakening**, and its location is **KaliaOne Valley, Yugantara**.
+
+The environment includes large terrain, forests, valleys, surrounding mountains, exploration paths, a skybox, and an alien settlement.
+
+Tanmay has worked on terrain setup, environmental layout, exploration routes, and the placement of gameplay elements.
+
+### Player Controller and Gameplay
+
+The player uses Unity's CharacterController rather than Rigidbody-based character movement.
+
+Implemented gameplay systems include:
+
+- Player movement
+- Running and jumping
+- Character rotation
+- Third-person camera following
+- Shooting mechanics
+- Player health and health UI
+
+### Enemy and Boss Systems
+
+The project includes enemy AI and an alien boss.
+
+Tanmay has worked on:
+
+- Enemy detection and movement
+- Enemy combat behavior
+- Animator parameters and animation states
+- Shooting systems and projectiles
+- Boss health and attack behavior
+- Weapon positioning
+- Ragdoll behavior on death
+
+An ongoing improvement involves coordinating the boss's aiming behavior, shooting animation, and projectile timing so that bullets are fired at the appropriate point in the animation rather than immediately when the player is detected.
+
+### Unity Systems and Technical Skills
+
+Dodo's Odyssey provides practical experience with:
+
+- Unity 3D and C# gameplay scripts
+- CharacterController-based movement
+- Unity Animator and animation states
+- Third-person camera behavior
+- Terrain and environment design
+- Enemy and boss AI
+- Shooting and projectile systems
+- Health systems and UI
+- Ragdoll behavior
+- Game audio and AudioSource-based sound effects
+
+### Development Approach
+
+Tanmay develops Dodo's Odyssey through hands-on implementation and debugging. He focuses on understanding how Unity components interact, how gameplay systems behave at runtime, and how to improve them incrementally.
+
+Dodo's Odyssey is an ongoing project. Features that are still being developed must not be described as completed or released.
+
+### What the Project Demonstrates
+
+Dodo's Odyssey demonstrates Tanmay's ongoing development of 3D gameplay programming skills, including player control, combat mechanics, enemy behavior, animation, environment design, and Unity systems.
+
+---
+
+# CATEGORY 3: AI AND MACHINE LEARNING SKILLS
+
+## 8. AI ENGINEERING AND MACHINE LEARNING
+
+Tanmay has practical project experience integrating machine learning models, retrieval systems, language models, and application interfaces.
+
+### Programming and ML Frameworks
+
+- Python
+- PyTorch
+- Hugging Face Transformers
+
+### Transformer Models
+
+- DistilBERT
+- Qwen2.5-3B-Instruct
+
+### Retrieval-Augmented Generation
+
+- RAG architecture
+- Document processing and text splitting
+- Chunking and chunk overlap
+- Text embeddings
+- Dense Passage Retrieval (DPR)
+- FAISS vector search
+- ChromaDB
+- Retriever configuration
+- Retrieved-context integration with LLMs
+- Context-grounded response generation
+
+### Fine-Tuning and Model Integration
+
+- Parameter-Efficient Fine-Tuning (PEFT)
+- Low-Rank Adaptation (LoRA)
+- Fine-tuning transformer-based models
+- Integrating fine-tuned models and adapters into AI pipelines
+
+### NLP and Classification
+
+- Intent classification
+- Text classification
+- Issue and category classification
+- Severity and recurrence classification
+- Transformer-based classification pipelines
+
+### LLM Application Development
+
+- Prompt engineering
+- LLM integration
+- Conversational AI
+- Question-answering applications
+- Gradio interfaces
+- LangChain
+- Context-grounded generation
+
+### Practical Implementation Experience
+
+Tanmay has implemented RAG pipelines manually in KAARSHIKA and MIRA, without LangChain. This provided practical experience with document retrieval, vector search, context preparation, and LLM integration.
+
+His work on Tia applies embeddings, ChromaDB, retrieval, prompt design, and LLM generation to a conversational portfolio application.
+
+### Skills Demonstrated by Projects
+
+**KAARSHIKA:** Intent classification, DPR and FAISS retrieval, reward scoring, action selection, and LLM integration.
+
+**MIRA:** DistilBERT-based classification, Logistic Regression-based risk assessment, regulatory retrieval, and multilingual generation.
+
+**Tia:** Semantic retrieval, ChromaDB, retrieved-context integration, context-grounded generation, and conversational interfaces.
+
+---
+
+# CATEGORY 4: GAME DEVELOPMENT SKILLS
+
+## 9. UNITY AND GAME DEVELOPMENT
+
+Tanmay has practical Unity and C# experience through a published 2D mobile game and an ongoing 3D Unity project.
+
+### Languages and Engine
+
+- C#
+- Unity
+- Unity Animator
+- CharacterController
+
+### Gameplay Programming
+
+- Player movement
+- Running and jumping
+- Character rotation
+- Third-person camera following
+- Shooting mechanics
+- Projectile systems
+- Health systems and UI
+
+### Enemy AI and Combat
+
+- Enemy detection
+- Enemy movement and combat behavior
+- Enemy AI
+- Boss AI
+- Attack behavior
+- Shooting logic
+- Animation-driven combat
+- Ragdoll behavior
+
+### 3D Environment and Level Design
+
+- Terrain setup
+- Environment layout
+- Forest and valley environments
+- Exploration paths
+- Level design
+- Science-fiction world building
+
+### 2D and Mobile Game Development
+
+- 2D platformer development
+- Pixel-art game integration
+- Mobile gameplay
+- Android publishing
+- AdMob interstitial and rewarded advertisements
+- Performance optimization
+- Game testing
+
+### Animation, Physics, and Audio
+
+- Unity Animator states and parameters
+- Character animation integration
+- CharacterController-based movement
+- Gameplay physics
+- Ragdoll systems
+- AudioSource-based sound effects
+
+### Skills Demonstrated by Projects
+
+**The Black Cave: Lost Treasure:** Published 2D mobile game development, gameplay implementation, movement physics, sword throwing, enemy AI, animation, Android publishing, optimization, testing, and monetization.
+
+**Dodo's Odyssey:** Ongoing 3D Unity development involving player control, third-person camera behavior, terrain and level design, enemy AI, boss combat, projectiles, animation, ragdolls, and audio.
+
+---
+
+## 10. PROGRAMMING LANGUAGES AND GENERAL TECHNOLOGIES
+
+### Programming Languages
+
+- Python
+- C#
+- C/C++
+
+### AI and Machine Learning
+
+- PyTorch
+- Hugging Face Transformers
+- DistilBERT
+- Qwen2.5-3B-Instruct
+- PEFT and LoRA
+- DPR
+- FAISS
+- ChromaDB
+
+### LLM and RAG Technologies
+
+- Retrieval-Augmented Generation
+- Text embeddings
+- Vector databases
+- LangChain
+- Prompt engineering
+- Document processing
+- Text splitting and chunking
+- Retrieval pipelines
+
+### Application and Backend Technologies
+
+- Flask
+- MariaDB
+- Gradio
+
+### Development Tools and Platforms
+
+- Git
+- GitHub
+- Unity
+- Android publishing
+- AdMob
+
+---
+
+## 11. CREATIVE AND DESIGN EXPERIENCE
+
+Tanmay has experience with digital branding, content creation, and visual communication alongside his software development work.
 
 He has worked with Thunderboltz Racing as part of its Content Creation Team.
 
-His work included:
+His contributions included:
 
-* Social media content
-* Brochures
-* Branding
-* Bike side-panel designs
+- Social media content
+- Brochures
+- Branding
+- Bike side-panel designs
 
-One notable result was helping increase Instagram page views from approximately 100 to 5,000 within one week.
+One reported outcome was helping increase Instagram page views from approximately 100 to 5,000 within one week.
 
 Tanmay has also worked on branding and presentation materials for ArcadeFox Studio.
 
-## PROGRAMMING AND DEVELOPMENT APPROACH
+This experience complements his technical work with practical knowledge of product presentation, visual communication, and creative collaboration.
 
-Tanmay prefers learning through practical implementation.
+---
 
-He focuses on understanding:
+## 12. DEVELOPMENT AND LEARNING APPROACH
 
-* What a component does
-* Why it is needed
-* How it connects with other components
-* What happens internally
-* When it should be used
-* What alternatives exist
+Tanmay prefers learning through practical implementation and understanding how software systems work internally.
 
-He generally starts with simple implementations and adds complexity as required by the project.
+When working with a new technology, he focuses on:
 
-In AI development, this approach has led him to build RAG systems manually before using frameworks such as LangChain.
+- What the component does
+- Why it is needed
+- How it connects with other components
+- What happens internally
+- When it should be used
+- What alternatives exist
+- How to test, debug, and improve the implementation
 
-In game development, he prefers straightforward Unity C# scripts and practical experimentation.
+He generally begins with straightforward implementations and introduces additional abstractions or frameworks when the project requires them.
 
-## AI AND LLM LEARNING
+In AI development, this approach led him to implement RAG pipelines manually in KAARSHIKA and MIRA before relying on higher-level frameworks for retrieval workflows.
 
-Tanmay has been studying Large Language Models and Generative AI.
+In game development, he uses practical Unity C# scripts and experimentation to understand gameplay systems, movement, physics, animation, and AI behavior.
 
-His learning areas include:
+His approach emphasizes learning through implementation, testing assumptions, investigating errors, and improving systems incrementally.
 
-* LLM fundamentals
-* Prompt engineering
-* Retrieval-Augmented Generation
-* Embeddings
-* Vector databases
-* Document loading
-* Text splitting
-* Information retrieval
-* LangChain
-* Gradio
-* Fine-tuning
-* PEFT
-* LoRA
-* NLP
-* Transformer models
-* LLM application development
+---
 
-## CAREER INTERESTS
+## 13. CAREER INTERESTS
 
-Tanmay is interested in internship and career opportunities related to:
+Tanmay is interested in internships and career opportunities in:
 
-* AI Engineering
-* Artificial Intelligence
-* Machine Learning
-* Generative AI
-* LLM application development
-* RAG systems
-* Conversational AI
-* NLP
-* Unity development
-* Game design and development
+### Artificial Intelligence
 
-He is interested in both AI and game development and is particularly interested in the intersection between AI and interactive applications.
+- AI Engineering
+- Machine Learning
+- Generative AI
+- LLM application development
+- Retrieval-Augmented Generation
+- Conversational AI
+- Natural Language Processing
+- AI-powered applications
 
-He is open to opportunities in India as well as international and remote opportunities.
+### Game Development
 
-## TECHNOLOGY EXPERIENCE
+- Unity development
+- C# gameplay programming
+- Game AI
+- Game mechanics and systems
+- Game design and development
 
-Programming Languages:
+He is particularly interested in opportunities that combine AI with practical applications and interactive experiences.
 
-* Python
-* C#
-* C/C++
+He is open to opportunities in India, as well as international and remote positions.
 
-AI and Machine Learning:
+---
 
-* PyTorch
-* Hugging Face Transformers
-* DistilBERT
-* Qwen2.5-3B-Instruct
-* PEFT
-* LoRA
-* DPR
-* FAISS
-* ChromaDB
+## 14. PROFESSIONAL PROFILE SUMMARY
 
-LLM and RAG:
+Tanmay Khomane is a Computer Engineering student at Savitribai Phule Pune University, expected to graduate in 2028. His portfolio combines practical AI engineering work with Unity game development.
 
-* Retrieval-Augmented Generation
-* Embeddings
-* Vector databases
-* LangChain
-* Prompt engineering
-* Document processing
-* Text splitting
-* Retrieval pipelines
+His AI projects include KAARSHIKA, an agricultural AI system combining intent classification, retrieval, action selection, and LLM generation; MIRA, a mine inspection and risk-assessment prototype combining classification, Logistic Regression-based risk assessment, regulatory RAG, and multilingual generation; and Tia, a conversational AI portfolio using embeddings, ChromaDB, and an LLM.
 
-Game Development:
+His AI experience includes Python, PyTorch, Hugging Face Transformers, DistilBERT, Qwen2.5-3B-Instruct, PEFT, LoRA, DPR, FAISS, ChromaDB, and RAG implementation.
 
-* Unity
-* C#
-* Unity Animator
-* CharacterController
-* 2D game development
-* 3D game development
-* Mobile game development
+In game development, he published The Black Cave: Lost Treasure (Demo), a 2D mobile platformer, under ArcadeFox Studio. He is also developing Dodo's Odyssey, an ongoing 3D Unity game involving player control, combat, enemy AI, boss behavior, animation, and environment design.
 
-Backend and Application Development:
-
-* Flask
-* MariaDB
-* Gradio
-
-Development Tools and Platforms:
-
-* Git
-* GitHub
-* Android publishing
-* AdMob
-
-## PROFESSIONAL PROFILE SUMMARY
-
-Tanmay Khomane is a Computer Engineering student graduating in 2028 with a strong interest in Artificial Intelligence, Generative AI, Large Language Models, Retrieval-Augmented Generation, and Unity game development.
-
-He has hands-on experience building custom AI systems such as KAARSHIKA and MIRA, including experience with RAG, embeddings, vector search, transformer models, PEFT/LoRA, classification, and LLM integration.
-
-He has also worked with LangChain for building an LLM-based QA chatbot.
-
-Alongside AI, Tanmay has practical Unity and C# experience, including a published Android game and an ongoing 3D game project, Dodo's Odyssey.
-
-His interests include building practical intelligent systems and exploring the intersection of AI, software engineering, and interactive applications.
+Tanmay emphasizes practical implementation, understanding system internals, debugging, and building projects that demonstrate applied technical skills.
