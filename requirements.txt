@@ -2,7 +2,4 @@ gradio
 gradio_client
 langchain-chroma
 langchain-huggingface
-sentence-transformers
-torch
-transformers
-peft
+huggingface_hub

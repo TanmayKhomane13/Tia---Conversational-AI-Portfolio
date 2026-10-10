@@ -3,7 +3,7 @@ import gradio as gr
 from gradio_client import Client
 
 from langchain_chroma import Chroma
-from langchain_huggingface import HuggingFaceEmbeddings
+from huggingface_hub import InferenceClient
 
 # ========== MODEL SECTION ==========
 HF_SPACE_ID = "TanmayKhomane13/tia-inference"
@@ -18,9 +18,33 @@ client = Client(
 CHROMA_PATH = "vector_store/chroma_db"
 COLLECTION_NAME = "Tia_KB"
 
-embeddings = HuggingFaceEmbeddings(
-    model_name="sentence-transformers/all-MiniLM-L6-v2"
+embedding_client = InferenceClient(
+    provider="hf-inference",
+    api_key=os.environ["HF_TOKEN"]
 )
+
+def get_embedding(text):
+    return embedding_client.feature_extraction(
+        text,
+        model="sentence-transformers/all-MiniLM-L6-v2"
+    ).tolist()
+
+class RemoteEmbeddings:
+    def embed_query(self, text):
+        return get_embedding(text)
+
+    def embed_documents(self, texts):
+        return [get_embedding(text) for text in texts]
+
+embeddings = RemoteEmbeddings()
+
+vector_store = Chroma(
+    collection_name=COLLECTION_NAME,
+    persist_directory=CHROMA_PATH,
+    embedding_function=embeddings
+)
+
+retriever = vector_store.as_retriever(search_kwargs={"k": 4})
 
 vector_store = Chroma(
     collection_name=COLLECTION_NAME,
