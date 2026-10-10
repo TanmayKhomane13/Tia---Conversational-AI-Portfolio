@@ -1,8 +1,10 @@
 gradio
-gradio_client
-langchain-chroma
-langchain-core
-langchain-huggingface
-sentence-transformers
+spaces
 torch
-numpy
+transformers
+peft
+accelerate
+sentence-transformers
+langchain-chroma
+langchain-huggingface
+langchain-core
